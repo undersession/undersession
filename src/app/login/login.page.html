@@ -1,0 +1,40 @@
+<ion-content padding>
+  <h1 class="us-title">Accedi</h1>
+  <div class="logo-ctn">
+    <img class="logo" width="120" src="assets/imgs/logoCont.svg">
+  </div>
+  <form [formGroup]="userFormBuilder" (ngSubmit)="login()">
+    <ion-list>
+      <ion-item class="us-ionitem">
+        <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!userFormBuilder.controls.email.pristine && !userFormBuilder.controls.email.valid">
+        <p class="form-error" item-right *ngIf="!userFormBuilder.controls.email.pristine && !userFormBuilder.controls.email.valid">
+          Inserire una mail valida
+        </p>
+      </ion-item>
+
+      <ion-item class="us-ionitem">
+        <ion-input type="password" formControlName="password" placeholder="password"></ion-input>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!userFormBuilder.controls.password.pristine && !userFormBuilder.controls.password.valid">
+        <p class="form-error" item-right *ngIf="!userFormBuilder.controls.password.pristine && !userFormBuilder.controls.password.valid">
+          Inserire una password valida
+        </p>
+      </ion-item>
+    </ion-list>
+    <ion-button class="us-button" expand="full" type="submit" [disabled]="!userFormBuilder.valid">Accedi</ion-button>
+  </form>
+  <span class="reset-password" (click)="resetPassword()">Password dimenticata?</span>
+
+  <!--<ion-button expand="full"(click)="signInWithOAuth('Facebook')">
+    <ion-icon slot="start" name="logo-facebook"></ion-icon>
+    Facebook
+  </ion-button>-->
+</ion-content>
+
+<ion-footer>
+  <div id="footer-center">
+      <h1 class="us-title-footer" (click)="signUp()">Crea un nuovo account</h1>
+  </div>
+</ion-footer>

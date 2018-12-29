@@ -1,0 +1,112 @@
+<ion-header>
+
+  <ion-toolbar>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+  <h1 class="us-title">Registrati</h1>
+  <div class="logo-ctn">
+      <img class="logo" width="120" src="assets/imgs/logoCont.svg">
+  </div>
+  <form [formGroup]="user" (ngSubmit)="createUser()">
+    <ion-list>
+      <ion-item class="us-ionitem">
+        <ion-input required type="text" formControlName="name" placeholder="Nome"></ion-input>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.name.pristine && !user.controls.name.valid">
+        <p class="form-error" item-right *ngIf="!user.controls.name.pristine && user.controls.name.hasError('required')">
+          This is a required field.
+        </p>
+      </ion-item>
+
+      <ion-item class="us-ionitem"> 
+        <ion-input  requiredtype="text" formControlName="surname" placeholder="Cognome"></ion-input>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.surname.pristine && !user.controls.surname.valid">
+        <p class="form-error" item-right *ngIf="!user.controls.surname.pristine && user.controls.surname.hasError('required')">
+          This is a required field.
+        </p>
+      </ion-item>
+
+      <ion-item class="us-ionitem">
+        <select required id="demo-non-form" placeholder="Sesso" formControlName="sex" mbsc-select [mbsc-options]="nonFormSettings" [mbsc-data]="items" class="dem-non-form"></select>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.sex.pristine && !user.controls.sex.valid">
+        <p class="form-error" item-right *ngIf="!user.controls.sex.pristine && user.controls.sex.hasError('required')">
+          This is a required field.
+        </p>
+      </ion-item>
+
+      <ion-item class="us-ionitem">
+        <ion-input required type="text" formControlName="birthday" placeholder="Data di nascita"></ion-input>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.birthday.pristine && !user.controls.birthday.valid">
+        <p class="form-error" item-right *ngIf="!user.controls.birthday.pristine && user.controls.birthday.hasError('required')">
+          This is a required field.
+        </p>
+      </ion-item>
+
+      <ion-item class="us-ionitem">
+        <ion-input required type="text" formControlName="university" placeholder="Università"></ion-input>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.university.pristine && !user.controls.university.valid">
+        <p class="form-error" item-right *ngIf="!user.controls.university.pristine && user.controls.university.hasError('required')">
+          This is a required field.
+        </p>
+      </ion-item>
+
+
+      <ion-item class="us-ionitem">
+        <ion-input required type="text" formControlName="faculty" placeholder="Facoltà"></ion-input>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.faculty.pristine && !user.controls.faculty.valid">
+        <p class="form-error" item-right *ngIf="!user.controls.faculty.pristine && user.controls.faculty.hasError('required')">
+          This is a required field.
+        </p>
+      </ion-item>
+
+
+
+
+      <ion-item class="us-ionitem">
+        <ion-input required #email type="email" formControlName="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.email.pristine && !user.controls.email.valid">
+        <p class="form-error" item-right *ngIf="!user.controls.email.pristine && user.controls.email.hasError('required')">
+          This is a required field.
+        </p>
+        <p class="form-error" item-right *ngIf="!user.controls.email.pristine && !user.controls.email.valid">
+          Invalid email address.
+        </p>
+      </ion-item>
+
+      <ion-item class="us-ionitem">
+        <ion-input required #password type="password" formControlName="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.password.pristine && !user.controls.password.valid">
+        <p class="form-error" item-right *ngIf="!user.controls.password.pristine && user.controls.password.hasError('required')">
+          This is a required field.
+        </p>
+        <p class="form-error" item-right *ngIf="!user.controls.password.pristine && user.controls.password?.errors?.minlength">
+          Password must have more than 5 characters
+        </p>
+      </ion-item>
+
+      <ion-item class="us-ionitem">
+        <ion-input required type="password" formControlName="passwordConfirmation" placeholder="Conferma password"></ion-input>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.passwordConfirmation.pristine && !user.controls.passwordConfirmation.valid">
+        <p class="form-error" item-right *ngIf="!user.controls.passwordConfirmation.pristine && user.controls.passwordConfirmation.hasError('required')">
+          This is a required field.
+        </p>
+        <p class="form-error" item-right *ngIf="!user.controls.passwordConfirmation.pristine && user.controls.passwordConfirmation?.errors?.minlength">
+          Password must have more than 5 characters
+        </p>
+      </ion-item>
+    </ion-list>
+    <ion-button class="us-button" expand="full" type="submit" [disabled]="!user.valid">Registrati</ion-button>
+  </form>
+</ion-content>

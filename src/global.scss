@@ -1,0 +1,70 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+// Mobiscroll
+
+.demo-non-form {
+    color: initial;
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    font-family: arial, verdana, sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+}
+
+// Button 
+
+.us-button {
+    --background: transparent;
+    --box-shadow: none;
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    height: auto;
+    border-radius: 4px;
+    background-image: linear-gradient(258deg, #f3c7a1, #e87975);
+}
+
+// ion Item
+
+.us-ionitem {
+    --border-width: 1px;
+    margin-bottom: 10px;
+}
+
+.us-ionitem-error {
+    --border-width: 0;
+    --inner-border-width: 0;
+    margin-bottom: 10px;
+    color: #e87975;
+}
+
+.form-error-list {
+
+}
+
+// Title
+
+.us-title {
+    font-size: 28px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #323b46;
+    margin-top: 30px;
+}
