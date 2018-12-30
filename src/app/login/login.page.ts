@@ -5,6 +5,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { AuthenticatorService } from '../providers/authenticator.service';
 import { AlertController } from '@ionic/angular';
 import { LoaderService } from '../providers/loader.service';
+import { EventLoggerService } from '../event-logger.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginPage implements OnInit {
     private platform: Platform,
     private authenticator: AuthenticatorService,
     private router: Router,
-    private loader: LoaderService
+    private loader: LoaderService,
+    public logger: EventLoggerService
   ) {
     this.userFormBuilder = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -37,6 +39,8 @@ export class LoginPage implements OnInit {
   }
 
   doSomethingAfterUserLogin(user) {
+    this.loader.hide();
+    this.logger.logEvent('US_Login', "Login", user.uid);
     console.log('Do something after login :)');
   }
 
@@ -71,21 +75,22 @@ export class LoginPage implements OnInit {
 
   // Perform login using user and password
   login() {
-    this.loader.show("Logging with Firebase email/password");
-    const email = this.userFormBuilder.controls.email.value;
-    const password = this.userFormBuilder.controls.password.value;
-    this.authenticator.login(email, password)
-    .then((user) => {
-      this.doSomethingAfterUserLogin(user);
-    })
-    .catch((e) => {
-      this.alertCtrl.create({
-        header: 'Error',
-        message: `Failed to login ${e.message}`,
-        buttons: [{ text: 'Ok' }]
-      }).then(alert => {
-        alert.present();
-        this.loader.hide();
+    this.loader.show("Logging with Firebase email/password").then(() => {
+      const email = this.userFormBuilder.controls.email.value;
+      const password = this.userFormBuilder.controls.password.value;
+      this.authenticator.login(email, password)
+      .then((user) => {
+        this.doSomethingAfterUserLogin(user);
+      })
+      .catch((e) => {
+        this.alertCtrl.create({
+          header: 'Error',
+          message: `Failed to login ${e.message}`,
+          buttons: [{ text: 'Ok' }]
+        }).then(alert => {
+          alert.present();
+          this.loader.hide();
+        });
       });
     });
   }
@@ -98,30 +103,35 @@ export class LoginPage implements OnInit {
   // Reset password
   resetPassword() {
     this.alertCtrl.create({
-      header: 'Reset your password',
-      message: 'Enter your email so we can send you a link to reset your password',
+      header: 'Recupera la tua password',
+      message: 'Inserisci la mail usata per la registrazione per ricevere il link per ripristinare la password',
       inputs: [ { type: 'email', name: 'email', placeholder: 'Email' } ],
       buttons: [
-        { text: 'Cancel', handler: data => {} },
+        { text: 'Annulla', handler: data => {} },
         {
-          text: 'Done',
+          text: 'Ok',
           handler: data => {
-            this.authenticator.resetPassword(data.email)
-            .then(() => {
-              this.alertCtrl.create({
-                header: 'Success',
-                message: 'Your password has been reset - Please check your email for further instructions.',
-                buttons: [{ text: 'Ok' }]
-              }).then(alert => alert.present());
-            })
-            .catch((e) => {
-              this.alertCtrl.create({
-                header: 'Error',
-                message: `Failed to login ${e.message}`,
-                buttons: [{ text: 'Ok' }]
-              }).then(alert => {
-                alert.present();
-                this.loader.hide();
+            this.loader.show('Resetting your password').then(() => {
+              this.authenticator.resetPassword(data.email)
+              .then(() => {
+                this.alertCtrl.create({
+                  header: 'Link inviato',
+                  message: 'Ti è stato inviato un link con le istruzione da seguire per resettare la tua password',
+                  buttons: [{ text: 'Ok' }]
+                }).then(alert => {
+                  this.loader.hide();
+                  alert.present()
+                });
+              })
+              .catch((e) => {
+                this.alertCtrl.create({
+                  header: 'Error',
+                  message: `${e.message}`,
+                  buttons: [{ text: 'Ok' }]
+                }).then(alert => {
+                  alert.present();
+                  this.loader.hide();
+                });
               });
             });
           }

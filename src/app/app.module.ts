@@ -19,6 +19,8 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { AuthenticatorService } from './providers/authenticator.service';
 import { LoaderService } from './providers/loader.service';
 import { AdMobFree } from '@ionic-native/admob-free/ngx';
+import { FirebaseAnalytics } from '@ionic-native/firebase-analytics/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +42,7 @@ import { AdMobFree } from '@ionic-native/admob-free/ngx';
     AngularFirestore,
     LoaderService,
     AdMobFree,
+    FirebaseAnalytics,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { filter, switchMap } from 'rxjs/operators';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { AuthenticatorService } from './providers/authenticator.service';
 
 @Component({
@@ -35,7 +35,7 @@ export class AppComponent {
     private statusBar: StatusBar,
     private events: Events,
     private auth: AngularFireAuth,
-    private db: AngularFireDatabase,
+    private db: AngularFirestore,
     private authenticatorService: AuthenticatorService,
     private router: Router
   ) {
@@ -53,7 +53,7 @@ export class AppComponent {
       this.authenticatorService.userDetails$ = this.auth.authState.pipe(
         filter(oAuthData => !!oAuthData && !!oAuthData.uid),
         switchMap(oAuthData => {
-          this.authenticatorService.userRef = this.db.object('users/' + oAuthData.uid);
+          this.authenticatorService.userRef = this.db.doc('users/' + oAuthData.uid);
           return this.authenticatorService.userRef.valueChanges();
         }),
         filter(userDetails => !!userDetails)
@@ -63,7 +63,7 @@ export class AppComponent {
       this.events.subscribe('user:login', eventData => {
         const user = eventData.user || eventData;
         console.log('This was trigger by the user:login event.');
-        const userRef = this.db.object(`users/${user.uid}`);
+        const userRef = this.db.doc(`users/${user.uid}`);
 
         const dataToPersist = {};
         console.log(user);
@@ -71,7 +71,7 @@ export class AppComponent {
         dataToPersist['uid'] = user.uid;
         dataToPersist['avatar'] = user.photoURL || 'assets/icon/no-avatar.png';
 
-        dataToPersist['fullName'] = user.displayName || 'Anonymous';
+        dataToPersist['name'] = user.displayName || 'Anonymous';
         dataToPersist['email'] = user.email;
 
         userRef.set(dataToPersist);

@@ -1,16 +1,17 @@
 <ion-header>
-
   <ion-toolbar>
-
+      <ion-buttons slot="start" class="us-back-arrow" (click)="back()">
+        <ion-icon ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon>
+      </ion-buttons>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content padding>
-  <h1 class="us-title">Registrati</h1>
   <div class="logo-ctn">
-      <img class="logo" width="120" src="assets/imgs/logoCont.svg">
+      <img class="logo" width="100" src="assets/imgs/logoCont.svg">
   </div>
+  <h1 class="us-title">Registrati</h1>
+  <p class="us-title-info">Scegli una mail e una password e compila i dati per creare al tuo account</p>
   <form [formGroup]="user" (ngSubmit)="createUser()">
     <ion-list>
       <ion-item class="us-ionitem">

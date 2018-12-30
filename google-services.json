@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "38602142113",
+    "firebase_url": "https://undersession-8b07b.firebaseio.com",
+    "project_id": "undersession-8b07b",
+    "storage_bucket": "undersession-8b07b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38602142113:android:24c0cf03d02d89b9",
+        "android_client_info": {
+          "package_name": "com.undersession"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38602142113-pcoqfcmb94ehdhofdc3bq7ss31m8vi0s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApYDMih_nsr51W8EP5kges35DPjdh0mGM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

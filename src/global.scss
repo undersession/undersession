@@ -64,7 +64,33 @@
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
-    text-align: center;
+    text-align: left;
     color: #323b46;
     margin-top: 30px;
+}
+
+.us-title-info {
+    font-size: 18px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #bdcadb;
+    text-align: left;
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+// Back Arrow
+
+.us-back-arrow {
+    margin-left: 15px;
+    font-size: 24px;
+}
+
+.header-md:after {
+    background-image: none;
 }

@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthenticatorService {
 
-  public userRef: AngularFireObject<any>;
+  public userRef: any;
   public userDetails$: Observable<any>;
 
   constructor(
@@ -113,14 +113,11 @@ export class AuthenticatorService {
   // Reset password
   resetPassword(email) {
     const promise = new Promise<any>((resolve, reject) => {
-      this.loader.show('Resetting your password');
       firebase.auth().sendPasswordResetEmail(email).
         then((result: any) => {
-        this.loader.hide();
         this.events.publish('user:resetPassword', result);
         resolve();
       }).catch((e: any) => {
-        this.loader.hide();
         reject(e);
       });
     });

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.neobiz.undersession" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.undersession" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Undersession</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -84,6 +84,9 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-admob-free" spec="0.25.0">
         <variable name="ADMOB_APP_ID" value="ca-app-pub-1081299432694384~8929007187" />
+    </plugin>
+    <plugin name="cordova-plugin-firebase-analytics" spec="1.0.1">
+        <variable name="FIREBASE_CORE_VERSION" value="16.0.+" />
     </plugin>
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="7.1.4" />

@@ -10,7 +10,13 @@ export class LoaderService {
   }
 
   show(message) {
-    this.loading.create({ message: message }).then(alert => alert.present());
+    var promise = new Promise<any>((resolve, reject) => {
+      this.loading.create({ message: message }).then(alert => {
+        alert.present();
+        resolve();
+      });
+    });
+    return promise;
   }
 
   hide() {

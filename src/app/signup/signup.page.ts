@@ -7,6 +7,7 @@ import { LoaderService } from '../providers/loader.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { MbscSelectOptions } from '@mobiscroll/angular';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -39,9 +40,10 @@ export class SignupPage implements OnInit {
     public afAuth: AngularFireAuth,
     private formBuilder: FormBuilder,
     private loader: LoaderService,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private router: Router
   ) {
-    this.user = formBuilder.group({
+    this.user = this.formBuilder.group({
       name: ['', Validators.compose([Validators.required])],
       surname: ['', Validators.compose([Validators.required])],
       sex: ['', Validators.compose([Validators.required])],
@@ -111,6 +113,10 @@ export class SignupPage implements OnInit {
         buttons: [{ text: 'Ok' }]
       }).then(alert => alert.present());
     });
+  }
+
+  back() {
+    this.router.navigate(['/login']);
   }
 
 }
