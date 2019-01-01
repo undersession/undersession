@@ -16,11 +16,12 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { AuthenticatorService } from './providers/authenticator.service';
-import { LoaderService } from './providers/loader.service';
+import { AuthenticatorService } from './services/authenticator.service';
+import { LoaderService } from './services/loader.service';
+import { FirebaseMessageService } from './services/firebase-message.service';
 import { AdMobFree } from '@ionic-native/admob-free/ngx';
-import { FirebaseAnalytics } from '@ionic-native/firebase-analytics/ngx';
-
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { Firebase } from '@ionic-native/firebase/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,7 @@ import { FirebaseAnalytics } from '@ionic-native/firebase-analytics/ngx';
     BrowserModule,
     IonicModule.forRoot(),
     AngularFireModule.initializeApp(Config.FIREBASE_CONFIG),
+    AngularFireMessagingModule,
     AppRoutingModule
   ],
   providers: [
@@ -42,7 +44,8 @@ import { FirebaseAnalytics } from '@ionic-native/firebase-analytics/ngx';
     AngularFirestore,
     LoaderService,
     AdMobFree,
-    FirebaseAnalytics,
+    Firebase,
+    FirebaseMessageService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

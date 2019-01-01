@@ -12,15 +12,41 @@
 
 // Mobiscroll
 
+input::placeholder {
+    color: #dedede;
+}
+
+.mbsc-mobiscroll .mbsc-input,
+.mbsc-material .mbsc-input {
+    margin: 0!important;
+}
+
+.mbsc-sel .mbsc-ltr .mbsc-sel-filter-cont .mbsc-sel-filter-input{
+    padding: 15px!important;
+    height: 50px;
+}
+
+.mbsc-mobiscroll .mbsc-input input, .mbsc-mobiscroll .mbsc-input textarea,
+.mbsc-material .mbsc-input input, .mbsc-material .mbsc-input textarea {
+    width: 100%!important;
+    border: 0!important;
+}
+
+input:focus {outline:none;}
+select:focus {outline:none;}
+
+ion-input{
+    --placeholder-color: #dedede;
+    --placeholder-opacity: 1;
+}
+
 .demo-non-form {
     color: initial;
     width: 100%;
-    padding: 10px;
-    margin: 6px 0 12px 0;
-    border: 1px solid #ccc;
+    margin: 0;
+    padding: 10px 0;
+    border: none;
     border-radius: 0;
-    font-family: arial, verdana, sans-serif;
-    font-size: 14px;
     box-sizing: border-box;
     -webkit-appearance: none;
 }
@@ -42,6 +68,7 @@
 .us-ionitem {
     --border-width: 1px;
     margin-bottom: 10px;
+    --inner-border-width: 0;
 }
 
 .us-ionitem-error {
@@ -49,10 +76,6 @@
     --inner-border-width: 0;
     margin-bottom: 10px;
     color: #e87975;
-}
-
-.form-error-list {
-
 }
 
 // Title
@@ -77,11 +100,15 @@
     line-height: normal;
     letter-spacing: normal;
     text-align: center;
-    color: #bdcadb;
+    color: #808080;
     text-align: left;
     display: block;
     margin-top: 0px;
     margin-bottom: 5px;
+}
+
+.ios .us-title-info {
+    margin-bottom: 15px;
 }
 
 // Back Arrow
@@ -93,4 +120,16 @@
 
 .header-md:after {
     background-image: none;
+}
+
+// Logo login registrazione
+
+.md .logo-ctn {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.ios .logo-ctn {
+    text-align: center;
+    margin: 40px 0 20px 0;
 }

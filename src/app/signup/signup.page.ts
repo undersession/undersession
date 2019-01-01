@@ -3,11 +3,16 @@ import { NavController } from '@ionic/angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { Events } from '@ionic/angular';
-import { LoaderService } from '../providers/loader.service';
+import { LoaderService } from '../services/loader.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { MbscSelectOptions } from '@mobiscroll/angular';
-import { Router, ActivatedRoute } from '@angular/router';
+import { mobiscroll, MbscSelectOptions, MbscDatetimeOptions } from '@mobiscroll/angular';
+import { Router } from '@angular/router';
+import { EventLoggerService } from '../services/event-logger.service';
+
+mobiscroll.settings = {
+  lang: 'it'
+};
 
 @Component({
   selector: 'app-signup',
@@ -16,8 +21,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class SignupPage implements OnInit {
 
+  //sex
+
   user: FormGroup;
   items = [
+    {
+      value: '',
+      text: ''
+    },
     {
       value: 'uomo',
       text: 'Uomo'
@@ -32,6 +43,66 @@ export class SignupPage implements OnInit {
     inputClass: 'demo-non-form'
   };
 
+  //university
+
+  university: any = [
+    {
+      value: '',
+      text: ''
+    },
+    {
+      value: 'Uni 1',
+      text: 'Bicocca'
+    }, 
+    {
+      value: 'Uni 2',
+      text: 'Bocconi'
+    },
+    {
+      value: 'Uni 2',
+      text: 'Cattolica'
+    }
+  ];
+
+  nonFormSettingsUniversity: MbscSelectOptions = {
+    multiline: 2,
+    height: 50,
+    data: this.university,
+    filter: true,
+    inputClass: 'demo-non-form'
+  };
+
+  faculty: any = [
+    {
+      value: '',
+      text: ''
+    },
+    {
+      value: 'Uni 1',
+      text: 'Facolta 1'
+    }, 
+    {
+      value: 'Uni 2',
+      text: 'Facolta 2'
+    },
+    {
+      value: 'Uni 2',
+      text: 'Facolta 3'
+    }
+  ];
+
+  nonFormSettingsFaculty: MbscSelectOptions = {
+    multiline: 2,
+    height: 50,
+    data: this.faculty,
+    filter: true,
+    inputClass: 'demo-non-form'
+  };
+
+  nonFormSettingsDate: MbscDatetimeOptions = {
+    display: 'bottom'
+  };
+
 
   constructor(
     private events: Events,
@@ -41,7 +112,8 @@ export class SignupPage implements OnInit {
     private formBuilder: FormBuilder,
     private loader: LoaderService,
     private alertCtrl: AlertController,
-    private router: Router
+    private router: Router,
+    public logger: EventLoggerService
   ) {
     this.user = this.formBuilder.group({
       name: ['', Validators.compose([Validators.required])],
@@ -70,11 +142,11 @@ export class SignupPage implements OnInit {
     const email = this.user.controls.email.value;
     const password = this.user.controls.password.value;
     const passwordConfirmation = this.user.controls.passwordConfirmation.value;
-    this.loader.show('Creating user...');
+    this.loader.show('Creazione utente...');
 
     new Promise((resolve, reject) => {
       if (passwordConfirmation !== password) {
-        reject(new Error('Password does not match'));
+        reject(new Error('Le password non corrispondono'));
       } else {
         resolve();
       }
@@ -102,6 +174,8 @@ export class SignupPage implements OnInit {
         birthday: birthday,
         university: university,
         faculty: faculty,
+      }).then(() => {
+        this.logger.logEvent('US_REGISTER', "Signup", user.uid);
       });
       this.loader.hide();
     })

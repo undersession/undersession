@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform, Events } from '@ionic/angular';
+import { Platform, Events, ToastController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
@@ -9,7 +9,12 @@ import { filter, switchMap } from 'rxjs/operators';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { AuthenticatorService } from './providers/authenticator.service';
+import { AuthenticatorService } from './services/authenticator.service';
+import { FirebaseMessageService } from './services/firebase-message.service';
+import { Firebase } from '@ionic-native/firebase/ngx';
+import { Subject } from 'rxjs/Subject';
+import { tap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-root',
@@ -26,6 +31,11 @@ export class AppComponent {
       title: 'List',
       url: '/list',
       icon: 'list'
+    },
+    {
+      title: 'Session timer',
+      url: '/session-timer',
+      icon: 'list'
     }
   ];
 
@@ -37,7 +47,10 @@ export class AppComponent {
     private auth: AngularFireAuth,
     private db: AngularFirestore,
     private authenticatorService: AuthenticatorService,
-    private router: Router
+    private router: Router,
+    public firebaseNative: Firebase,
+    public fms: FirebaseMessageService,
+    public toastCtrl: ToastController
   ) {
     this.initializeApp();
   }
@@ -85,12 +98,26 @@ export class AppComponent {
         console.log('This was trigger by the user:resetPassword event.');
       });
 
+      this.fms.getToken();
+
+      // Listen to incoming messages
+      this.fms.listenToNotifications().pipe(
+          tap(msg => {
+            // show a toast
+            alert(JSON.stringify(msg));
+          })
+        )
+      .subscribe()
+
+
 
 
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
   }
+
+  
 
   signOut() {
     this.auth.auth.signOut();

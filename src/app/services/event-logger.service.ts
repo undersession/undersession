@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { FirebaseAnalytics } from '@ionic-native/firebase-analytics/ngx';
+import { Firebase } from '@ionic-native/firebase/ngx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventLoggerService {
 
-  constructor(public fba: FirebaseAnalytics) { }
+  constructor(public firebaseAnalitycs: Firebase) { }
 
   logEvent(name:string, page:string, uid:string){
-    this.fba.logEvent(name, { page: page, uid: uid })
+    this.firebaseAnalitycs.logEvent(name, { page: page, uid: uid })
     .then((res: any) => {console.log("Ok => ", res);})
     .catch((error: any) => console.error("Error => ", error));
   }

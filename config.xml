@@ -85,9 +85,7 @@
     <plugin name="cordova-plugin-admob-free" spec="0.25.0">
         <variable name="ADMOB_APP_ID" value="ca-app-pub-1081299432694384~8929007187" />
     </plugin>
-    <plugin name="cordova-plugin-firebase-analytics" spec="1.0.1">
-        <variable name="FIREBASE_CORE_VERSION" value="16.0.+" />
-    </plugin>
+    <plugin name="cordova-plugin-firebase" spec="2.0.5" />
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="7.1.4" />
 </widget>

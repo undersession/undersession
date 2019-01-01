@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController, Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Validators, FormBuilder } from '@angular/forms';
-import { AuthenticatorService } from '../providers/authenticator.service';
+import { AuthenticatorService } from '../services/authenticator.service';
 import { AlertController } from '@ionic/angular';
-import { LoaderService } from '../providers/loader.service';
-import { EventLoggerService } from '../event-logger.service';
+import { LoaderService } from '../services/loader.service';
+import { EventLoggerService } from '../services/event-logger.service';
 
 @Component({
   selector: 'app-login',

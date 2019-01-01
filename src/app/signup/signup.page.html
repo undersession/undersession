@@ -19,7 +19,7 @@
       </ion-item>
       <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.name.pristine && !user.controls.name.valid">
         <p class="form-error" item-right *ngIf="!user.controls.name.pristine && user.controls.name.hasError('required')">
-          This is a required field.
+          Campo obbligatorio.
         </p>
       </ion-item>
 
@@ -28,44 +28,44 @@
       </ion-item>
       <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.surname.pristine && !user.controls.surname.valid">
         <p class="form-error" item-right *ngIf="!user.controls.surname.pristine && user.controls.surname.hasError('required')">
-          This is a required field.
+          Campo obbligatorio.
         </p>
       </ion-item>
 
       <ion-item class="us-ionitem">
-        <select required id="demo-non-form" placeholder="Sesso" formControlName="sex" mbsc-select [mbsc-options]="nonFormSettings" [mbsc-data]="items" class="dem-non-form"></select>
+        <select required placeholder="Sesso" formControlName="sex" mbsc-select [mbsc-options]="nonFormSettings" [mbsc-data]="items"></select>
       </ion-item>
       <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.sex.pristine && !user.controls.sex.valid">
         <p class="form-error" item-right *ngIf="!user.controls.sex.pristine && user.controls.sex.hasError('required')">
-          This is a required field.
+          Campo obbligatorio.
         </p>
       </ion-item>
 
       <ion-item class="us-ionitem">
-        <ion-input required type="text" formControlName="birthday" placeholder="Data di nascita"></ion-input>
+          <mbsc-date formControlName="birthday"  [options]="nonFormSettingsDate" placeholder="Data di nascita"></mbsc-date>
       </ion-item>
       <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.birthday.pristine && !user.controls.birthday.valid">
         <p class="form-error" item-right *ngIf="!user.controls.birthday.pristine && user.controls.birthday.hasError('required')">
-          This is a required field.
+          Campo obbligatorio.
         </p>
       </ion-item>
 
       <ion-item class="us-ionitem">
-        <ion-input required type="text" formControlName="university" placeholder="Università"></ion-input>
+          <select required placeholder="Università" formControlName="university" mbsc-select [mbsc-options]="nonFormSettingsUniversity"></select>
       </ion-item>
       <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.university.pristine && !user.controls.university.valid">
         <p class="form-error" item-right *ngIf="!user.controls.university.pristine && user.controls.university.hasError('required')">
-          This is a required field.
+          Campo obbligatorio.
         </p>
       </ion-item>
 
 
       <ion-item class="us-ionitem">
-        <ion-input required type="text" formControlName="faculty" placeholder="Facoltà"></ion-input>
+        <select required placeholder="Facoltà" formControlName="faculty" mbsc-select [mbsc-options]="nonFormSettingsFaculty"></select>
       </ion-item>
       <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.faculty.pristine && !user.controls.faculty.valid">
         <p class="form-error" item-right *ngIf="!user.controls.faculty.pristine && user.controls.faculty.hasError('required')">
-          This is a required field.
+          Campo obbligatorio.
         </p>
       </ion-item>
 
@@ -77,10 +77,10 @@
       </ion-item>
       <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.email.pristine && !user.controls.email.valid">
         <p class="form-error" item-right *ngIf="!user.controls.email.pristine && user.controls.email.hasError('required')">
-          This is a required field.
+          Campo obbligatorio.
         </p>
         <p class="form-error" item-right *ngIf="!user.controls.email.pristine && !user.controls.email.valid">
-          Invalid email address.
+          Email non valida.
         </p>
       </ion-item> 
 
@@ -89,10 +89,10 @@
       </ion-item>
       <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.password.pristine && !user.controls.password.valid">
         <p class="form-error" item-right *ngIf="!user.controls.password.pristine && user.controls.password.hasError('required')">
-          This is a required field.
+          Campo obbligatorio.
         </p>
         <p class="form-error" item-right *ngIf="!user.controls.password.pristine && user.controls.password?.errors?.minlength">
-          Password must have more than 5 characters
+          La password deve essere almeno di 6 caratteri
         </p>
       </ion-item>
 
@@ -101,10 +101,10 @@
       </ion-item>
       <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.passwordConfirmation.pristine && !user.controls.passwordConfirmation.valid">
         <p class="form-error" item-right *ngIf="!user.controls.passwordConfirmation.pristine && user.controls.passwordConfirmation.hasError('required')">
-          This is a required field.
+          Campo obbligatorio.
         </p>
         <p class="form-error" item-right *ngIf="!user.controls.passwordConfirmation.pristine && user.controls.passwordConfirmation?.errors?.minlength">
-          Password must have more than 5 characters
+          La password deve essere almeno di 6 caratteri
         </p>
       </ion-item>
     </ion-list>
