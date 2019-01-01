@@ -133,3 +133,14 @@ ion-input{
     text-align: center;
     margin: 40px 0 20px 0;
 }
+
+//toolbar
+
+ion-toolbar {
+    --background: linear-gradient(to left, #f3c7a1, #e87975);
+    --color: #fff;
+}
+
+ion-menu-button {
+    --color: #fff;
+}

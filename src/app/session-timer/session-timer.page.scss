@@ -1,0 +1,84 @@
+.session {
+    --background: linear-gradient(to top, #616d7c, #323b46);
+}
+
+#review-grid {
+    margin: 0;
+    --ion-grid-padding: 0;
+    ion-row {
+        border-bottom: 2px solid #3E4854;
+        .center-col {
+            border-left: 2px solid #3E4854;
+            border-right: 2px solid #3E4854;
+        }
+        ion-col {
+            padding: 30px 0;
+            div {
+                text-align: center;
+                .timer {
+                    position: relative;
+                    font-size: 22px;
+                    font-weight: 600;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    text-align: right;
+                    color: #ffffff;
+                    margin-left: -20px;
+                    .min {
+                        position: absolute;
+                        top: 3px;
+                        right: -25px;
+                        font-size: 12px;
+                        font-weight: 600;
+                        font-style: normal;
+                        font-stretch: normal;
+                        line-height: normal;
+                        letter-spacing: normal;
+                        text-align: center;
+                        color: #ffffff;
+                    }
+                }
+                .divider {
+                    width: 25%;
+                    height: 3px;
+                    margin: 5px auto;
+                    border-radius: 8px;
+                    background: #E77C6E;
+                }
+                .minute {
+                    font-size: 12px;
+                    font-weight: 300;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    text-align: center;
+                    color: #bdcadb;
+                }
+            }
+        }
+    }
+}
+#oval {
+    width: 100%;
+    height: 200px;
+    margin-top: 25px;
+    position: relative;
+    background: url(../../assets/imgs/oval.svg) no-repeat center top / contain transparent;
+    .counter {
+        font-size: 38px;
+        font-weight: 600;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+        position: absolute;
+        bottom: 50px;
+        text-align: center;
+        width: 100%;
+    }
+}

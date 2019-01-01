@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="196px" height="156px" viewBox="0 0 196 156" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>bar</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="75.8680556%" y1="10.1019965%" x2="40.1320437%" y2="66.6825964%" id="linearGradient-1">
+            <stop stop-color="#F3C7A1" offset="0%"></stop>
+            <stop stop-color="#E87975" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="9.-Activity-stats" transform="translate(-90.000000, -234.000000)" stroke-width="8">
+            <g id="Time-stats" transform="translate(0.000000, -6.000000)">
+                <g id="ipercent" transform="translate(59.000000, 209.000000)">
+                    <g id="bar">
+                        <path d="M129,223 C180.914766,223 223,180.914766 223,129 C223,77.0852335 180.914766,35 129,35 C77.0852335,35 35,77.0852335 35,129 C35,180.914766 77.0852335,223 129,223 Z" id="Oval-118-Copy" stroke="#F3C7A1" stroke-dasharray="1,188,401" transform="translate(129.000000, 129.000000) rotate(-300.000000) translate(-129.000000, -129.000000) "></path>
+                        <path d="M129,223 C180.914766,223 223,180.914766 223,129 C223,90.8273519 200.246275,57.9691211 167.561854,43.2483367 C159.834307,39.7679159 151.551649,37.3013546 142.883347,36.0181227 C138.352844,35.3474393 133.716996,35 129,35 C77.0852335,35 35,77.0852335 35,129 C35,180.914766 77.0852335,223 129,223 Z" id="Oval-118" stroke="url(#linearGradient-1)" stroke-dasharray="1,258,401" transform="translate(129.000000, 129.000000) rotate(-300.000000) translate(-129.000000, -129.000000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

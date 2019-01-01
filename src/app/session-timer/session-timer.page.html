@@ -1,11 +1,44 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>sessionTimer</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Sessione</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  {{ timer }}
+<ion-content class="session">
+  <div>
+    <ion-grid id="review-grid">
+      <ion-row>
+        <ion-col>
+          <div>
+            <span class="timer">1:37 <span class="min">min</span></span>
+            <div class="divider"></div>
+            <span class="minute">Studio</span>
+          </div>
+        </ion-col>
+        <ion-col class="center-col">
+            <div>
+              <span class="timer">1:37<span class="min">min</span></span>
+              <div class="divider"></div>
+              <span class="minute">Pausa</span>
+            </div>
+        </ion-col>
+        <ion-col>
+            <div>
+              <span class="timer">1:37<span class="min">min</span></span>
+              <div class="divider"></div>
+              <span class="minute">Record</span>
+              </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div id="oval">
+      <div class="counter">{{ timer }}</div>
+  </div>
   <button (click)="startTimer()">Start</button>
   <button (click)="stopTimer()">Stop</button>
 </ion-content>
+  

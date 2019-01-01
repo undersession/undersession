@@ -8,7 +8,7 @@ import { Observable} from 'rxjs/Rx';
 })
 export class SessionTimerPage implements OnInit {
 
-  timer: string = "00:00";
+  timer: string = "00:00:00";
   subscriptionTimer: any;
 
   constructor() { 
@@ -34,11 +34,13 @@ export class SessionTimerPage implements OnInit {
     const hours = Math.floor(secNum / 3600);
     const minutes = Math.floor((secNum - (hours * 3600)) / 60);
     const seconds = secNum - (hours * 3600) - (minutes * 60);
+    let hoursString = '';
     let minutesString = '';
     let secondsString = '';
+    hoursString = (hours < 10) ? '0' + hours : hours.toString();
     minutesString = (minutes < 10) ? '0' + minutes : minutes.toString();
     secondsString = (seconds < 10) ? '0' + seconds : seconds.toString();
-    return minutesString + ':' + secondsString;
+    return hoursString + ':' + minutesString + ':' + secondsString;
   }
 
 }
