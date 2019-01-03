@@ -4,6 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { mobiscroll, MbscSelectOptions, MbscDatetimeOptions } from '@mobiscroll/angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AuthenticatorService } from '../services/authenticator.service';
+import { LoaderService } from '../services/loader.service';
 
 mobiscroll.settings = {
   lang: 'it'
@@ -109,7 +110,8 @@ export class ExamPage implements OnInit {
   constructor(public modalController: ModalController,
               private formBuilder: FormBuilder,
               public db: AngularFirestore,
-              private authenticatorService: AuthenticatorService) {
+              private authenticatorService: AuthenticatorService,
+              private loader: LoaderService,) {
     this.formExam = this.formBuilder.group({
       exam: ['', Validators.compose([Validators.required])],
       credits: ['', Validators.compose([Validators.required])],
@@ -121,20 +123,26 @@ export class ExamPage implements OnInit {
   }
 
   createExam() {
-    const exam = this.formExam.controls.exam.value;
-    const credits = this.formExam.controls.credits.value;
-    const professor = this.formExam.controls.professor.value;
-    new Promise((resolve, reject) => {
-      this.authenticatorService.userDetails$.subscribe(val => {
-        const ref = this.db.doc('/exams/users/').collection(val.uid);
-        ref.add({
-          exam: exam,
-          credits: credits,
-          professors: professor,
-        }).then(() => {
-          resolve();
-        }).catch(() => {
-          reject();
+    this.loader.show('Salvataggio esame...').then(() => {
+      const exam = this.formExam.controls.exam.value;
+      const credits = this.formExam.controls.credits.value;
+      const professor = this.formExam.controls.professor.value;
+      new Promise((resolve, reject) => {
+        this.authenticatorService.userDetails$.subscribe(val => {
+          const ref = this.db.doc('/exams/users/').collection(val.uid);
+          ref.add({
+            exam: exam,
+            credits: credits,
+            professors: professor,
+          }).then(() => {
+            this.loader.hide();
+            this.closeModal();
+            resolve();
+          }).catch(() => {
+            this.loader.hide();
+            this.closeModal();
+            reject();
+          });
         });
       });
     });
