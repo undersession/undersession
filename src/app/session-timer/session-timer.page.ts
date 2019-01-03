@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable} from 'rxjs/Rx';
+import { mobiscroll } from '@mobiscroll/angular';
+import { AlertController } from '@ionic/angular';
+import {interval} from 'rxjs/observable/interval';
+import 'rxjs/add/operator/startWith';
+
+mobiscroll.settings = {
+    lang: 'it'
+};
 
 @Component({
   selector: 'app-session-timer',
@@ -10,8 +18,11 @@ export class SessionTimerPage implements OnInit {
 
   timer: string = "00:00:00";
   subscriptionTimer: any;
+  calendarOneWeek: Date;
+  isStart: boolean = false;
+  status: string = "INIZIA";
 
-  constructor() { 
+  constructor(public alertController: AlertController) { 
   }
 
   ngOnInit() {
@@ -19,14 +30,110 @@ export class SessionTimerPage implements OnInit {
 
   startTimer() {
     if(!this.subscriptionTimer) {
+      this.isStart = true;
+      this.status = "STUDIO";
       this.subscriptionTimer = Observable.interval(1000).subscribe( x => this.timer = this.getSecondsAsDigitalClock(x));
-    }
+    } 
+  } 
+
+  pauseTimer() {
+    if(!this.subscriptionTimer) {
+      this.isStart = false;
+      this.status = "PAUSA";
+      this.subscriptionTimer = Observable.interval(1000).subscribe( x => this.timer = this.getSecondsAsDigitalClock(x));
+    } 
+  } 
+
+  buttonPause() {
+    this.pauseAlert();
+  }
+
+  buttonStart() {
+    this.playAlert();
   }
 
   stopTimer() {
-    this.subscriptionTimer.unsubscribe();
-    this.subscriptionTimer = null;
-    this.timer = this.getSecondsAsDigitalClock(0);
+    this.stopAlert();
+  }
+
+  resetTimer() {
+    if(this.subscriptionTimer) {
+      this.subscriptionTimer.unsubscribe();
+      this.subscriptionTimer = null;
+    }
+  }
+
+
+
+  async pauseAlert() {
+    const alert = await this.alertController.create({
+      message: 'Iniziare una sessione di pausa?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Inizia',
+          handler: () => {
+            this.resetTimer();
+            this.pauseTimer();
+            this.timer = this.getSecondsAsDigitalClock(0);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async playAlert() {
+    const alert = await this.alertController.create({
+      message: 'Iniziare una sessione di studio?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Inizia',
+          handler: () => {
+            this.resetTimer();
+            this.startTimer();
+            this.timer = this.getSecondsAsDigitalClock(0);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async stopAlert() {
+    const alert = await this.alertController.create({
+      message: 'Terminare la sessione di studio?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Termina',
+          handler: () => {
+            this.resetTimer();
+            this.timer = this.getSecondsAsDigitalClock(0);
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
   getSecondsAsDigitalClock(inputSeconds: any) {

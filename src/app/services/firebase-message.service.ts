@@ -22,9 +22,25 @@ export class FirebaseMessageService {
     if (this.platform.is('ios')) {
       token = await this.firebaseNative.getToken();
       await this.firebaseNative.grantPermission();
+      this.firebaseNative.hasPermission().then(() => {
+        console.log("HO I PERMESSI");
+      })
     } 
     return this.saveTokenToFirestore(token)
   }
+
+  pushNotificationPermissions() {
+    if (!this.platform.is('ios')) {
+        return new Promise((s) => s());
+    }
+    // return this.firebase.hasPermission().then(data => {
+    //     this.firebase.logEvent('PushNotificationPermissions', data);
+    //     if (data.isEnabled) {
+    //         return true;
+    //     }
+         return this.firebaseNative.grantPermission();
+    // });
+}
 
   private saveTokenToFirestore(token) {
     if (!token) return;

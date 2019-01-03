@@ -81,4 +81,55 @@
         text-align: center;
         width: 100%;
     }
+    .status {
+        display: block;
+        font-size: 16px;
+        font-weight: 600;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: #6c7b8a;
+        text-transform: uppercase;
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+    .day {
+        font-size: 20px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+        position: absolute;
+        bottom: 120px;
+        width: 100%;
+    }
+    .timer-divider {
+        width: 60px;
+        height: 3px;
+        margin: 5px auto;
+        border-radius: 8px;
+        background: #252f37;
+        position: absolute;
+        left: calc(50% - 30px);
+        bottom: 33px;
+    }
+}
+
+#action-grid {
+    margin: 40px 0 0 0;
+    --ion-grid-padding: 0;
+    .play {
+        text-align: right;
+        margin-right: 50px;
+    }
+    .stop {
+        text-align: left;
+        margin-left: 50px;
+    }
 }

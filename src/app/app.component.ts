@@ -105,9 +105,7 @@ export class AppComponent {
       (msg) => {
         console.log(JSON.stringify(msg))
       });
-  }
-
-  
+  }  
 
   signOut() {
     this.auth.auth.signOut();

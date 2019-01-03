@@ -17,7 +17,8 @@ input::placeholder {
 }
 
 .mbsc-mobiscroll .mbsc-input,
-.mbsc-material .mbsc-input {
+.mbsc-material .mbsc-input,
+.mbsc-ios .mbsc-input {
     margin: 0!important;
 }
 
@@ -27,13 +28,99 @@ input::placeholder {
 }
 
 .mbsc-mobiscroll .mbsc-input input, .mbsc-mobiscroll .mbsc-input textarea,
-.mbsc-material .mbsc-input input, .mbsc-material .mbsc-input textarea {
+.mbsc-material .mbsc-input input, .mbsc-material .mbsc-input textarea,
+.mbsc-ios .mbsc-input input, .mbsc-material .mbsc-input textarea {
     width: 100%!important;
     border: 0!important;
 }
 
+.mbsc-mobiscroll .mbsc-fr-w,
+.mbsc-material .mbsc-fr-w,
+.mbsc-ios .mbsc-fr-w {
+    box-shadow: 0 -1px 10px 0 rgba(0, 0, 0, 0.25);
+    background: linear-gradient(to top, #323b46, #323b46)!important;
+}
+
+.mbsc-mobiscroll .mbsc-fr-w,
+.mbsc-material .mbsc-fr-w {
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.mbsc-mobiscroll .mbsc-cal-days>div,
+.mbsc-material .mbsc-cal-days>div, 
+.mbsc-ios .mbsc-cal-days>div {
+    border: none!important;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff!important;
+}
+
+.mbsc-mobiscroll .mbsc-cal-day-date,
+.mbsc-material .mbsc-cal-day-date, 
+.mbsc-ios .mbsc-cal-day-date {
+    font-size: 10px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #6c7b8a;
+}
+
+.mbsc-mobiscroll .mbsc-cal-c .mbsc-cal .mbsc-cal-body .mbsc-cal-row .mbsc-selected .mbsc-cal-cell-txt,
+.mbsc-material .mbsc-cal-c .mbsc-cal .mbsc-cal-body .mbsc-cal-row .mbsc-selected .mbsc-cal-cell-txt,
+.mbsc-ios .mbsc-cal-c .mbsc-cal .mbsc-cal-body .mbsc-cal-row .mbsc-selected .mbsc-cal-cell-txt {
+    background: #e87975!important;
+    color: #fff!important;
+}
+
+.mbsc-cal-btn-w,
+.mbsc-material .mbsc-cal-btn-w,
+.mbsc-ios .mbsc-cal-btn-w {
+    display: none!important;
+}
+
+.mbsc-cal-scroll-c,
+.mbsc-material .mbsc-cal-scroll-c,
+.mbsc-ios .mbsc-cal-scroll-c {
+    margin-top: 5px;
+}
+
+.mbsc-mobiscroll.mbsc-no-touch:not(.mbsc-ev-cal) .mbsc-cal-cell:not(.mbsc-disabled):hover .mbsc-cal-cell-txt, 
+.mbsc-mobiscroll.mbsc-no-touch .mbsc-cal-day:not(.mbsc-disabled) .mbsc-cal-day-date:hover, 
+.mbsc-mobiscroll .mbsc-cal-cell:focus .mbsc-cal-cell-txt,
+
+.mbsc-material.mbsc-no-touch:not(.mbsc-ev-cal) .mbsc-cal-cell:not(.mbsc-disabled):hover .mbsc-cal-cell-txt, 
+.mbsc-material.mbsc-no-touch .mbsc-cal-day:not(.mbsc-disabled) .mbsc-cal-day-date:hover, 
+.mbsc-material .mbsc-cal-cell:focus .mbsc-cal-cell-txt,
+
+.mbsc-ios.mbsc-no-touch:not(.mbsc-ev-cal) .mbsc-cal-cell:not(.mbsc-disabled):hover .mbsc-cal-cell-txt, 
+.mbsc-ios.mbsc-no-touch .mbsc-cal-day:not(.mbsc-disabled) .mbsc-cal-day-date:hover, 
+.mbsc-ios .mbsc-cal-cell:focus .mbsc-cal-cell-txt {
+    background: rgba(232,121,117,0.3)!important;
+}
 input:focus {outline:none;}
 select:focus {outline:none;}
+
+.mbsc-fr-hb.mbsc-ios.mbsc-fr-inline .mbsc-fr-w, .mbsc-fr-hb.mbsc-ios.mbsc-fr-inline .mbsc-fr-c, .mbsc-fr-hb.mbsc-ios .mbsc-fr-hdr, .mbsc-fr-hb.mbsc-ios .mbsc-fr-btn-cont, .mbsc-fr-hb.mbsc-ios.mbsc-fr-center .mbsc-fr-btn-w, .mbsc-fr-hb.mbsc-ios.mbsc-fr-bottom .mbsc-fr-popup, .mbsc-fr-hb.mbsc-ios.mbsc-cal-liq.mbsc-fr-center .mbsc-fr-btn-cont, .mbsc-fr-hb.mbsc-ios.mbsc-calendar .mbsc-fr-popup .mbsc-fr-btn-cont, .mbsc-fr-hb.mbsc-ios .mbsc-cal-day, .mbsc-fr-hb.mbsc-ios .mbsc-cal-sc-m-cell, .mbsc-cal-event-list .mbsc-cal-event:before, .mbsc-cal-event-list .mbsc-cal-event:after, .mbsc-fr-hb.mbsc-ios .mbsc-range-btn-end, .mbsc-fr-hb.mbsc-ios .mbsc-range-btn-end .mbsc-range-btn:before, .mbsc-fr-hb.mbsc-ios .mbsc-np-btn, .mbsc-fr-hb.mbsc-ios.mbsc-ms-more .mbsc-ms-item:after, .mbsc-lv-hb.mbsc-lv-ios .mbsc-lv-item:before, .mbsc-lv-hb.mbsc-lv-ios .mbsc-lv-item:after, .mbsc-lv-hb.mbsc-lv-ios .mbsc-lv-gr-title, .mbsc-lv-hb.mbsc-lv-ios, .mbsc-form-hb.mbsc-ios .mbsc-control-w:before, .mbsc-form-hb.mbsc-ios .mbsc-control-w:after, .mbsc-form-hb.mbsc-ios .mbsc-form-group-inset .mbsc-control-ng .mbsc-control-w:before, .mbsc-form-hb.mbsc-ios .mbsc-form-group-inset .mbsc-control-ng .mbsc-control-w:after, .mbsc-form-hb.mbsc-ios .mbsc-divider, .mbsc-form-hb.mbsc-ios .mbsc-btn-group {
+    border: 0!important;
+}
+
+.mbsc-ios.mbsc-fr-nobtn .mbsc-fr-w {
+    padding: 20px!important;
+}
+
+.mbsc-ios .mbsc-cal-c .mbsc-cal .mbsc-cal-body .mbsc-cal-row .mbsc-selected .mbsc-cal-cell-txt {
+    border-color: transparent!important;
+}
+
 
 ion-input{
     --placeholder-color: #dedede;

@@ -3,10 +3,9 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Sessione</ion-title>
+    <ion-title>Matematica</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content class="session">
   <div>
     <ion-grid id="review-grid">
@@ -36,9 +35,33 @@
     </ion-grid>
   </div>
   <div id="oval">
+      <div class="day">Today</div>
       <div class="counter">{{ timer }}</div>
+      <div class="timer-divider"></div>
+      <div class="status">{{ status }}</div>
   </div>
-  <button (click)="startTimer()">Start</button>
-  <button (click)="stopTimer()">Stop</button>
+  <div>
+    <ion-grid id="action-grid">
+      <ion-row>
+        <ion-col>
+          <div class="play">
+              <img *ngIf="!isStart" height="50" src="../../assets/imgs/play.svg" (click)="buttonStart()" />
+              <img *ngIf="isStart" height="50" src="../../assets/imgs/pause.svg" (click)="buttonPause()" />
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="stop">
+              <img height="50" src="../../assets/imgs/stop.svg" (click)="stopTimer()" />
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <mbsc-calendar [(ngModel)]="calendarOneWeek" display="inline" weeks="1"></mbsc-calendar>
+</ion-footer>
   
