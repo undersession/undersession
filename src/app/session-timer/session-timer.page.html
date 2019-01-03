@@ -45,13 +45,13 @@
       <ion-row>
         <ion-col>
           <div class="play">
-              <img *ngIf="!isStart" height="50" src="../../assets/imgs/play.svg" (click)="buttonStart()" />
-              <img *ngIf="isStart" height="50" src="../../assets/imgs/pause.svg" (click)="buttonPause()" />
+              <img *ngIf="!isStart" height="80" src="../../assets/imgs/play.svg" (click)="buttonStart()" />
+              <img *ngIf="isStart" height="80" src="../../assets/imgs/pause.svg" (click)="buttonPause()" />
           </div>
         </ion-col>
         <ion-col>
           <div class="stop">
-              <img height="50" src="../../assets/imgs/stop.svg" (click)="stopTimer()" />
+              <img height="80" src="../../assets/imgs/stop.svg" (click)="stopTimer()" />
           </div>
         </ion-col>
       </ion-row>
@@ -60,7 +60,6 @@
   <div>
   </div>
 </ion-content>
-
 <ion-footer>
   <mbsc-calendar [(ngModel)]="calendarOneWeek" display="inline" weeks="1"></mbsc-calendar>
 </ion-footer>

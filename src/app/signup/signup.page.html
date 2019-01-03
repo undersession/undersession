@@ -51,7 +51,7 @@
       </ion-item>
 
       <ion-item class="us-ionitem">
-          <select required placeholder="Università" formControlName="university" mbsc-select [mbsc-options]="nonFormSettingsUniversity"></select>
+          <select  #university="mobiscroll" required placeholder="Università" formControlName="university" mbsc-select [mbsc-options]="nonFormSettingsUniversity"></select>
       </ion-item>
       <ion-item class="form-error-list us-ionitem-error" *ngIf="!user.controls.university.pristine && !user.controls.university.valid">
         <p class="form-error" item-right *ngIf="!user.controls.university.pristine && user.controls.university.hasError('required')">

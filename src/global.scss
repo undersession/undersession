@@ -33,13 +33,18 @@ input::placeholder {
     width: 100%!important;
     border: 0!important;
 }
-
-.mbsc-mobiscroll .mbsc-fr-w,
-.mbsc-material .mbsc-fr-w,
-.mbsc-ios .mbsc-fr-w {
-    box-shadow: 0 -1px 10px 0 rgba(0, 0, 0, 0.25);
-    background: linear-gradient(to top, #323b46, #323b46)!important;
+.mbsc-calendar {
+    .mbsc-fr-w,
+    .mbsc-material .mbsc-fr-w,
+    .mbsc-ios .mbsc-fr-w {
+            box-shadow: 0 -1px 10px 0 rgba(0, 0, 0, 0.25);
+            background: linear-gradient(to top, #323b46, #323b46)!important;
+        }
 }
+
+
+
+
 
 .mbsc-mobiscroll .mbsc-fr-w,
 .mbsc-material .mbsc-fr-w {
