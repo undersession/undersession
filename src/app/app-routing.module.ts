@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'signup', loadChildren: './signup/signup.module#SignupPageModule' },
-  { path: 'session-timer', loadChildren: './session-timer/session-timer.module#SessionTimerPageModule' }
+  { path: 'session-timer', loadChildren: './session-timer/session-timer.module#SessionTimerPageModule' },
 ];
 
 @NgModule({

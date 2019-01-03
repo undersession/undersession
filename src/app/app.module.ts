@@ -22,10 +22,12 @@ import { FirebaseMessageService } from './services/firebase-message.service';
 import { AdMobFree } from '@ionic-native/admob-free/ngx';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { Firebase } from '@ionic-native/firebase/ngx';
+import { ExamPage } from './exam/exam.page';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, ExamPage],
+  entryComponents: [ExamPage],
   imports: [ 
     FormsModule, 
     MbscModule,
@@ -33,7 +35,8 @@ import { Firebase } from '@ionic-native/firebase/ngx';
     IonicModule.forRoot(),
     AngularFireModule.initializeApp(Config.FIREBASE_CONFIG),
     AngularFireMessagingModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     StatusBar,

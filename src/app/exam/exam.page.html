@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start" class="us-back-arrow" (click)="closeModal()">
+        <ion-icon ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <h1 class="us-title">Aggiungi esame</h1>
+  <p class="us-title-info">Aggiungi tutte le informazioni del tuo esame</p>
+  <form [formGroup]="formExam" (ngSubmit)="createExam()">
+    <ion-list>
+      <ion-item class="us-ionitem">
+        <select required placeholder="Nome esame" formControlName="exam" mbsc-select [mbsc-options]="examsSettings"></select>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.exam.pristine && !formExam.controls.exam.valid">
+        <p class="form-error" item-right *ngIf="!formExam.controls.exam.pristine && formExam.controls.exam.hasError('required')">
+          Campo obbligatorio.
+        </p>
+      </ion-item>
+      <ion-item class="us-ionitem">
+        <ion-input required type="number" formControlName="credits" placeholder="Crediti"></ion-input>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.credits.pristine && !formExam.controls.credits.valid">
+        <p class="form-error" item-right *ngIf="!formExam.controls.credits.pristine && formExam.controls.credits.hasError('required')">
+          Campo obbligatorio.
+        </p>
+      </ion-item>
+      <ion-item class="us-ionitem">
+        <select required placeholder="Professore" formControlName="professor" mbsc-select [mbsc-options]="professorsSettings"></select>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.professor.pristine && !formExam.controls.professor.valid">
+        <p class="form-error" item-right *ngIf="!formExam.controls.professor.pristine && formExam.controls.professor.hasError('required')">
+          Campo obbligatorio.
+        </p>
+      </ion-item>
+    </ion-list>
+    <ion-button class="us-button" expand="full" type="submit" [disabled]="!formExam.valid">Aggiungi</ion-button>
+  </form>
+</ion-content>

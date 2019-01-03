@@ -78,7 +78,6 @@ export class SignupPage implements OnInit {
     filter: true,
     inputClass: 'demo-non-form',
     onSet: () => {
-      this.university.pop();
     },
     onItemTap: (event, inst) => {
       inst.setVal(event.value);
@@ -125,13 +124,13 @@ export class SignupPage implements OnInit {
     filter: true,
     inputClass: 'demo-non-form',
     onSet: () => {
-      this.faculty.pop();
     },
     onItemTap: (event, inst) => {
       inst.setVal(event.value);
       inst.select();
     },
     onFilter: (event) => {
+      console.log(event)
       this.faculty.pop();
       this.faculty.push(
         {
