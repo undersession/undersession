@@ -10,10 +10,13 @@
 </ion-header>
 
 <ion-content>
-    <ion-card class="welcome-card">
-      <ion-img src="/assets/shapes.svg"></ion-img>
-    </ion-card>
-    <ion-card class="welcome-card" (click)="addExam()">
-      Aggiungi Esame
-    </ion-card>
+  <div *ngFor="let exam of exams; let i = index">
+    <h2 (click)="goToPlans(exam.id)">Esame {{ exam.exam }}</h2>
+    <p>Crediti: {{ exam.credits }}</p>
+    <p>Prof: {{ exam.professor }}</p>
+    <p>ID: {{ exam.id }}</p>
+    <p (click)="deleteAlert(exam.id)">ELIMINA</p>
+  </div>
 </ion-content>
+
+<div (click)="addExam()">Aggiungu</div>

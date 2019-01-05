@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { mobiscroll, MbscSelectOptions, MbscDatetimeOptions } from '@mobiscroll/angular';
+import { mobiscroll, MbscSelectOptions } from '@mobiscroll/angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AuthenticatorService } from '../services/authenticator.service';
 import { LoaderService } from '../services/loader.service';
@@ -111,8 +111,9 @@ export class ExamPage implements OnInit {
               private formBuilder: FormBuilder,
               public db: AngularFirestore,
               private authenticatorService: AuthenticatorService,
-              private loader: LoaderService,) {
+              private loader: LoaderService) {
     this.formExam = this.formBuilder.group({
+      color: ['', Validators.compose([Validators.required])],
       exam: ['', Validators.compose([Validators.required])],
       credits: ['', Validators.compose([Validators.required])],
       professor: ['', Validators.compose([Validators.required])],
@@ -124,6 +125,7 @@ export class ExamPage implements OnInit {
 
   createExam() {
     this.loader.show('Salvataggio esame...').then(() => {
+      const color = this.formExam.controls.color.value;
       const exam = this.formExam.controls.exam.value;
       const credits = this.formExam.controls.credits.value;
       const professor = this.formExam.controls.professor.value;
@@ -131,9 +133,10 @@ export class ExamPage implements OnInit {
         this.authenticatorService.userDetails$.subscribe(val => {
           const ref = this.db.doc('/exams/users/').collection(val.uid);
           ref.add({
+            color: color,
             exam: exam,
             credits: credits,
-            professors: professor,
+            professor: professor,
           }).then(() => {
             this.loader.hide();
             this.closeModal();
@@ -149,9 +152,7 @@ export class ExamPage implements OnInit {
   }
 
   closeModal() {
-    this.modalController.dismiss({
-      'result': 'value'
-    })
+    this.modalController.dismiss();
   }
 
 }

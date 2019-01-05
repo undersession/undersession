@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start" class="us-back-arrow" (click)="closeModal()">
+        <ion-icon ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <h1 class="us-title">Aggiungi Piano</h1>
+  <p class="us-title-info">Aggiungi un piano di studio</p>
+  <form [formGroup]="formPlan" (ngSubmit)="createPlan()">
+    <ion-list>
+      <ion-item class="us-ionitem">
+        <mbsc-date formControlName="appeal"  [options]="nonFormSettingsDate" placeholder="Data di appello"></mbsc-date>
+      </ion-item>
+      <ion-item class="form-error-list us-ionitem-error" *ngIf="!formPlan.controls.appeal.pristine && !formPlan.controls.appeal.valid">
+        <p class="form-error" item-right *ngIf="!formPlan.controls.appeal.pristine && formPlan.controls.appeal.hasError('required')">
+          Campo obbligatorio.
+        </p>
+      </ion-item>
+    </ion-list>
+  </form>
+  <div>
+    <div *ngFor="let book of books; let i = index">
+        {{ book.isbn }} - {{ book.title }} - {{ book.page }} pagine
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer padding>
+  <div>
+    <form [formGroup]="formBook" (ngSubmit)="addBook()">
+      <ion-list>
+        <ion-item class="us-ionitem">
+          <select required placeholder="ISBN" formControlName="isbn" mbsc-select [mbsc-options]="isbnSettings"></select>
+        </ion-item>
+        <ion-item class="us-ionitem">
+          <ion-input required type="text" formControlName="title" placeholder="Titolo"></ion-input>
+        </ion-item>
+        <ion-item class="form-error-list us-ionitem-error" *ngIf="!formBook.controls.title.pristine && !formBook.controls.title.valid">
+          <p class="form-error" item-right *ngIf="!formBook.controls.title.pristine && formBook.controls.title.hasError('required')">
+            Campo obbligatorio.
+          </p>
+        </ion-item>
+        <ion-item class="us-ionitem">
+          <ion-input required type="text" formControlName="page" placeholder="Pagine"></ion-input>
+        </ion-item>
+        <ion-item class="form-error-list us-ionitem-error" *ngIf="!formBook.controls.page.pristine && !formBook.controls.page.valid">
+          <p class="form-error" item-right *ngIf="!formBook.controls.page.pristine && formBook.controls.page.hasError('required')">
+            Campo obbligatorio.
+          </p>
+        </ion-item>
+      </ion-list>
+      <ion-button class="us-button" expand="full" type="submit" [disabled]="!formBook.valid">Aggiungi Materiale</ion-button>
+    </form>
+  </div>
+  <div>
+    <ion-button class="us-button" expand="full" type="submit" [disabled]="!formPlan.valid">Crea piano</ion-button>
+  </div>
+</ion-footer>
+  

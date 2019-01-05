@@ -23,11 +23,12 @@ import { AdMobFree } from '@ionic-native/admob-free/ngx';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import { ExamPage } from './exam/exam.page';
+import { PlanPage } from './plan/plan.page';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, ExamPage],
-  entryComponents: [ExamPage],
+  declarations: [AppComponent, ExamPage, PlanPage],
+  entryComponents: [ExamPage, PlanPage],
   imports: [ 
     FormsModule, 
     MbscModule,

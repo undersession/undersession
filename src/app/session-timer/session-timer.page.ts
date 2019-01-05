@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable} from 'rxjs/Rx';
 import { mobiscroll } from '@mobiscroll/angular';
 import { AlertController } from '@ionic/angular';
-import {interval} from 'rxjs/observable/interval';
 import 'rxjs/add/operator/startWith';
 
 mobiscroll.settings = {
@@ -62,8 +61,6 @@ export class SessionTimerPage implements OnInit {
       this.subscriptionTimer = null;
     }
   }
-
-
 
   async pauseAlert() {
     const alert = await this.alertController.create({
