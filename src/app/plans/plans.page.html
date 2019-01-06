@@ -13,5 +13,6 @@
     <h2>Appeal date {{ plan.appeal }}</h2>
     <p>ID: {{ plan.id }}</p>
     <p (click)="deleteAlert(plan.id)">ELIMINA</p>
+    <p (click)="initPlan(plan.id, examId)">INIZIA</p>
   </div>
 </ion-content>

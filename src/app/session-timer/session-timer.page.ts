@@ -3,6 +3,8 @@ import { Observable} from 'rxjs/Rx';
 import { mobiscroll } from '@mobiscroll/angular';
 import { AlertController } from '@ionic/angular';
 import 'rxjs/add/operator/startWith';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 mobiscroll.settings = {
     lang: 'it'
@@ -15,13 +17,22 @@ mobiscroll.settings = {
 })
 export class SessionTimerPage implements OnInit {
 
+  examId: any;
+  planId: any;
   timer: string = "00:00:00";
   subscriptionTimer: any;
   calendarOneWeek: Date;
   isStart: boolean = false;
   status: string = "INIZIA";
 
-  constructor(public alertController: AlertController) { 
+  constructor(public alertController: AlertController,
+              private route: ActivatedRoute,
+              public router: Router,) { 
+  }
+
+  ionViewDidEnter() {
+    this.examId = this.route.snapshot.paramMap.get('exam_id');
+    this.planId = this.route.snapshot.paramMap.get('plan_id');
   }
 
   ngOnInit() {
@@ -126,6 +137,7 @@ export class SessionTimerPage implements OnInit {
           handler: () => {
             this.resetTimer();
             this.timer = this.getSecondsAsDigitalClock(0);
+            this.router.navigate(['/plans/' + this.examId]);
           }
         }
       ]

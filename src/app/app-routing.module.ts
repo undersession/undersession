@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'signup', loadChildren: './signup/signup.module#SignupPageModule' },
-  { path: 'session-timer', loadChildren: './session-timer/session-timer.module#SessionTimerPageModule' },
+  { path: 'session-timer/:plan_id/:exam_id', loadChildren: './session-timer/session-timer.module#SessionTimerPageModule' },
   { path: 'welcome', loadChildren: './welcome/welcome.module#WelcomePageModule' },
   { path: 'plans/:exam_id', loadChildren: './plans/plans.module#PlansPageModule' }
 ];

@@ -105,6 +105,10 @@ export class PlansPage implements OnInit {
     });
   }
 
+  initPlan(planId, examId) {
+    this.router.navigate(['/session-timer/' + planId + '/' + examId]);
+  }
+
   back() {
     this.router.navigate(['/home']);
   }

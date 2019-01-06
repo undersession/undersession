@@ -108,12 +108,11 @@ export class PlanPage implements OnInit {
   createPlan() {
     this.loader.show('Salvataggio plan...').then(() => {
       const appeal = this.formPlan.controls.appeal.value;
-      console.log(moment(new Date(appeal)).format('DD/MM/YYYY'))
-      /*new Promise((resolve, reject) => {
+      new Promise((resolve, reject) => {
         this.authenticatorService.userDetails$.subscribe(val => {
           const ref = this.db.doc('/users/' + val.uid).collection("exam").doc(this.examId).collection("plan");
           ref.add({
-            appeal: appeal,
+            appeal: moment(new Date(appeal)).format('DD/MM/YYYY'),
             material: this.books,
           }).then(() => {
             this.loader.hide();
@@ -125,7 +124,7 @@ export class PlanPage implements OnInit {
             reject();
           });
         });
-      });*/
+      });
     });
   }
 
