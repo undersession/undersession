@@ -73,7 +73,15 @@ export class HomePage {
   deleteExam(id) {
     this.loader.show('Eliminazione esame...').then(() => {
       this.authenticatorService.userDetails$.subscribe(val => {
-        var ref = this.db.doc<any>('exams/users/').collection(val.uid).doc(id);
+        var ref = this.db.doc('/users/' + val.uid).collection("exam").doc(id);
+        var refPlan = this.db.doc('/users/' + val.uid).collection("exam").doc(id).collection("plan");
+        refPlan.get().subscribe((querySnapshot) => {
+          querySnapshot.forEach((plan) => {
+            var refToDelete = this.db.doc('/users/' + val.uid).collection("exam").doc(id).collection("plan").doc(plan.id)
+            refToDelete.delete();
+          })
+          this.loader.hide();
+        });
         ref.delete().then(() =>{
           this.loader.hide();
           this.loadAllExams();
