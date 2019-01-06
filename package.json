@@ -49,6 +49,7 @@
     "cordova-support-google-services": "1.2.1",
     "core-js": "^2.5.4",
     "firebase": "^5.7.2",
+    "moment": "^2.23.0",
     "phonegap-plugin-push": "2.2.3",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",

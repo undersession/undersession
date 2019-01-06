@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { mobiscroll, MbscSelectOptions, MbscDatetimeOptions } from '@mobiscroll/angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AuthenticatorService } from '../services/authenticator.service';
 import { LoaderService } from '../services/loader.service';
+import * as moment from 'moment';
 
 mobiscroll.settings = {
   lang: 'it'
@@ -18,6 +19,7 @@ mobiscroll.settings = {
 })
 export class PlanPage implements OnInit {
 
+  @Input() examId: string;
   formPlan: FormGroup;
   formBook: FormGroup;
   books = [];
@@ -83,7 +85,8 @@ export class PlanPage implements OnInit {
   }
 
   nonFormSettingsDate: MbscDatetimeOptions = {
-    display: 'bottom'
+    display: 'bottom',
+    dateFormat: 'dd/mm/yyyy'
   };
 
   ngOnInit() {
@@ -100,6 +103,30 @@ export class PlanPage implements OnInit {
     }
     this.books.push(book);
     this.formBook.reset();
+  }
+
+  createPlan() {
+    this.loader.show('Salvataggio plan...').then(() => {
+      const appeal = this.formPlan.controls.appeal.value;
+      console.log(moment(new Date(appeal)).format('DD/MM/YYYY'))
+      /*new Promise((resolve, reject) => {
+        this.authenticatorService.userDetails$.subscribe(val => {
+          const ref = this.db.doc('/users/' + val.uid).collection("exam").doc(this.examId).collection("plan");
+          ref.add({
+            appeal: appeal,
+            material: this.books,
+          }).then(() => {
+            this.loader.hide();
+            this.closeModal();
+            resolve();
+          }).catch(() => {
+            this.loader.hide();
+            this.closeModal();
+            reject();
+          });
+        });
+      });*/
+    });
   }
 
   closeModal() {

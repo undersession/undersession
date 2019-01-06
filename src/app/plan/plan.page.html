@@ -8,7 +8,7 @@
 <ion-content padding>
   <h1 class="us-title">Aggiungi Piano</h1>
   <p class="us-title-info">Aggiungi un piano di studio</p>
-  <form [formGroup]="formPlan" (ngSubmit)="createPlan()">
+  <form [formGroup]="formPlan">
     <ion-list>
       <ion-item class="us-ionitem">
         <mbsc-date formControlName="appeal"  [options]="nonFormSettingsDate" placeholder="Data di appello"></mbsc-date>
@@ -55,7 +55,7 @@
     </form>
   </div>
   <div>
-    <ion-button class="us-button" expand="full" type="submit" [disabled]="!formPlan.valid">Crea piano</ion-button>
+    <ion-button class="us-button" expand="full" type="submit" [disabled]="!formPlan.valid" (click)="createPlan()">Crea piano</ion-button>
   </div>
 </ion-footer>
   

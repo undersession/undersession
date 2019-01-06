@@ -131,7 +131,8 @@ export class ExamPage implements OnInit {
       const professor = this.formExam.controls.professor.value;
       new Promise((resolve, reject) => {
         this.authenticatorService.userDetails$.subscribe(val => {
-          const ref = this.db.doc('/exams/users/').collection(val.uid);
+          //const ref = this.db.doc('/exams/users/').collection(val.uid); //old
+          const ref = this.db.doc('/users/' + val.uid).collection("exam");
           ref.add({
             color: color,
             exam: exam,

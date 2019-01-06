@@ -9,4 +9,9 @@
 
 <ion-content padding>
   <div (click)="createPlan()">Crea Piano {{ examId }}</div>
+  <div *ngFor="let plan of plans; let i = index">
+    <h2>Appeal date {{ plan.appeal }}</h2>
+    <p>ID: {{ plan.id }}</p>
+    <p (click)="deleteAlert(plan.id)">ELIMINA</p>
+  </div>
 </ion-content>

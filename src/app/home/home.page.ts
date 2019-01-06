@@ -32,7 +32,8 @@ export class HomePage {
     this.loader.show('Caricamento esami...').then(() => {
       this.authenticatorService.userDetails$.subscribe(val => {
         this.exams = [];
-        var ref = this.db.doc<any>('exams/users/').collection(val.uid);
+        //var ref = this.db.doc<any>('exams/users/').collection(val.uid);
+        var ref = this.db.doc<any>('/users/' + val.uid).collection("exam");
         ref.get().subscribe((querySnapshot) => {
           querySnapshot.forEach((exam) => {
             var ex = {
