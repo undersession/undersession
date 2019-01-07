@@ -10,6 +10,7 @@ import { mobiscroll, MbscSelectOptions, MbscDatetimeOptions } from '@mobiscroll/
 import { Router } from '@angular/router';
 import { EventLoggerService } from '../services/event-logger.service';
 import { ViewChild } from '@angular/core';
+import * as moment from 'moment';
 
 mobiscroll.settings = {
   lang: 'it'
@@ -170,8 +171,6 @@ export class SignupPage implements OnInit {
     });
   }
 
-  
-
   ngOnInit() {
 
   }
@@ -181,7 +180,7 @@ export class SignupPage implements OnInit {
     const name = this.user.controls.name.value;
     const surname = this.user.controls.surname.value;
     const sex = this.user.controls.sex.value;
-    const birthday = this.user.controls.birthday.value;
+    const birthday = moment(new Date(this.user.controls.birthday.value)).format('DD/MM/YYYY');
     const university = this.user.controls.university.value;
     const faculty = this.user.controls.faculty.value;
     const email = this.user.controls.email.value;
@@ -219,6 +218,9 @@ export class SignupPage implements OnInit {
         birthday: birthday,
         university: university,
         faculty: faculty,
+        premium: false,
+        points: 0,
+        premiumValidUntil: ''
       }).then(() => {
         this.logger.logEvent('US_REGISTER', "Signup", user.uid);
       });

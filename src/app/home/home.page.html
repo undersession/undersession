@@ -8,15 +8,50 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <div *ngFor="let exam of exams; let i = index">
-    <h2 (click)="goToPlans(exam.id)">Esame {{ exam.exam }}</h2>
-    <p>Crediti: {{ exam.credits }}</p>
-    <p>Prof: {{ exam.professor }}</p>
-    <p>ID: {{ exam.id }}</p>
-    <p (click)="deleteAlert(exam.id)">ELIMINA</p>
+  <div *ngFor="let exam of exams; let i = index" [ngClass]="exam.color">
+    <ion-grid>
+      <ion-row (click)="goToPlans(exam.id)">
+        <ion-col size="2" class="icon"></ion-col>
+        <ion-col size="6">
+          <ion-row>
+            <ion-col>
+              <div class="exam">
+                {{ exam.exam }}
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="prof">
+                {{ exam.professor }}
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="4">
+          <ion-row>
+            <ion-col class="credits">Crediti</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="credits-number">{{ exam.credits }}</ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <div class="graph">
+              <canvas [id]="exam.id + '-chart'"></canvas>
+            </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!--<p (click)="deleteAlert(exam.id)">ELIMINA</p>-->
   </div>
 </ion-content>
 
-<div (click)="addExam()">Aggiungu</div>
+
+<ion-footer padding>
+  <div id="add-exam" (click)="addExam()">Aggiungi Esame</div>
+</ion-footer>
+    

@@ -11,7 +11,8 @@
   <form [formGroup]="formPlan">
     <ion-list>
       <ion-item class="us-ionitem">
-        <mbsc-date formControlName="appeal"  [options]="nonFormSettingsDate" placeholder="Data di appello"></mbsc-date>
+        <ion-datetime formControlName="appeal" placeholder="Data di appello" display-format="MM/DD/YYYY"></ion-datetime>
+        <!--<mbsc-date formControlName="appeal"  [options]="nonFormSettingsDate" placeholder="Data di appello"></mbsc-date>-->
       </ion-item>
       <ion-item class="form-error-list us-ionitem-error" *ngIf="!formPlan.controls.appeal.pristine && !formPlan.controls.appeal.valid">
         <p class="form-error" item-right *ngIf="!formPlan.controls.appeal.pristine && formPlan.controls.appeal.hasError('required')">
@@ -22,7 +23,7 @@
   </form>
   <div>
     <div *ngFor="let book of books; let i = index">
-        {{ book.isbn }} - {{ book.title }} - {{ book.page }} pagine
+      {{ book.title }} - {{ book.page }} pagine
     </div>
   </div>
 </ion-content>
@@ -31,9 +32,9 @@
   <div>
     <form [formGroup]="formBook" (ngSubmit)="addBook()">
       <ion-list>
-        <ion-item class="us-ionitem">
+        <!--<ion-item class="us-ionitem">
           <select required placeholder="ISBN" formControlName="isbn" mbsc-select [mbsc-options]="isbnSettings"></select>
-        </ion-item>
+        </ion-item>-->
         <ion-item class="us-ionitem">
           <ion-input required type="text" formControlName="title" placeholder="Titolo"></ion-input>
         </ion-item>

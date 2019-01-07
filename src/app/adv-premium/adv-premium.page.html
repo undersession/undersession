@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="us-back-arrow" (click)="closeModal()">
+      <ion-icon ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <h1 class="us-title">Rimani premium</h1>
+  <p class="us-title-info">Guarda le pubblicita, guadagna punti e diventa un utente premium, ricorda puoi gardare una sola pubblicita all'ora con un limite massimo di 6 volte al giorno</p>
+</ion-content>
+<ion-footer padding>
+  <div>
+    <ion-button *ngIf="!videoReady" class="us-button" expand="full" [disabled]="!videoReady" (click)="showAdv()">Caricamento pubblicita..</ion-button>
+    <ion-button *ngIf="videoReady" class="us-button" expand="full" [disabled]="!videoReady" (click)="showAdv()">Guarda pubblicita</ion-button>
+  </div>
+</ion-footer>

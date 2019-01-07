@@ -2,3 +2,81 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
+.orange {
+  background-color: #ffc15a;
+}
+.green {
+  background-color: #50e3c2;
+}
+.red {
+  background-color: #ff995a;
+}
+.blue {
+  background-color: #5d96e4;
+}
+
+.icon {
+  background: url(../../assets/imgs/steps.svg) no-repeat  center center / 50%;
+}
+
+.exam {
+  font-size: 24px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  color: #ffffff; 
+}
+
+.prof {
+  font-size: 16px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.06;
+  letter-spacing: normal;
+  color: #3b4142;
+  span {
+    font-weight: bold;
+  }
+}
+
+.credits {
+  font-size: 24px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  color: #ffffff;
+  text-align: center;
+}
+
+.credits-number {
+  font-size: 16px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.06;
+  letter-spacing: normal;
+  color: #3b4142;
+  text-align: center;
+}
+
+.graph {
+  margin-top: 15px;
+}
+
+#add-exam {
+  text-align: center;
+  color: #ffffff;
+  font-size: 22px;
+  background-image: linear-gradient(258deg, #f3c7a1, #e87975);
+  padding: 15px;
+}
+
+.footer {
+  padding: 0!important;
+}

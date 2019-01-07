@@ -19,7 +19,8 @@
         </p>
       </ion-item>
       <ion-item class="us-ionitem">
-        <select required placeholder="Nome esame" formControlName="exam" mbsc-select [mbsc-options]="examsSettings"></select>
+        <ion-input required type="text" formControlName="exam" placeholder="Nome esame"></ion-input>
+        <!--<select required placeholder="Nome esame" formControlName="exam" mbsc-select [mbsc-options]="examsSettings"></select>-->
       </ion-item>
       <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.exam.pristine && !formExam.controls.exam.valid">
         <p class="form-error" item-right *ngIf="!formExam.controls.exam.pristine && formExam.controls.exam.hasError('required')">
@@ -35,7 +36,8 @@
         </p>
       </ion-item>
       <ion-item class="us-ionitem">
-        <select required placeholder="Professore" formControlName="professor" mbsc-select [mbsc-options]="professorsSettings"></select>
+        <ion-input required type="text" formControlName="professor" placeholder="Professore"></ion-input>
+        <!--<select required placeholder="Professore" formControlName="professor" mbsc-select [mbsc-options]="professorsSettings"></select>-->
       </ion-item>
       <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.professor.pristine && !formExam.controls.professor.valid">
         <p class="form-error" item-right *ngIf="!formExam.controls.professor.pristine && formExam.controls.professor.hasError('required')">

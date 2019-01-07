@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content padding>
-  <div (click)="createPlan()">Crea Piano {{ examId }}</div>
   <div *ngFor="let plan of plans; let i = index">
     <h2>Appeal date {{ plan.appeal }}</h2>
     <p>ID: {{ plan.id }}</p>
@@ -16,3 +15,6 @@
     <p (click)="initPlan(plan.id, examId)">INIZIA</p>
   </div>
 </ion-content>
+<ion-footer padding>
+  <div id="add-plan" (click)="createPlan()">Aggiungi Piano</div>
+</ion-footer>

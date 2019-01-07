@@ -78,7 +78,7 @@ export class PlanPage implements OnInit {
       appeal: ['', Validators.compose([Validators.required])]
     });
     this.formBook = this.formBuilder.group({
-      isbn: ['', Validators.compose([Validators.required])],
+      //isbn: ['', Validators.compose([Validators.required])],
       title: ['', Validators.compose([Validators.required])],
       page: ['', Validators.compose([Validators.required])]
     });
@@ -95,9 +95,9 @@ export class PlanPage implements OnInit {
   addBook() {
     const title = this.formBook.controls.title.value;
     const page = this.formBook.controls.page.value;
-    const isbn = this.formBook.controls.isbn.value;
+    //const isbn = this.formBook.controls.isbn.value;
     var book = {
-      isbn: isbn,
+      //isbn: isbn,
       page: page,
       title: title
     }

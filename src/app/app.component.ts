@@ -4,9 +4,7 @@ import { Platform, Events } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
-
 import { filter, switchMap } from 'rxjs/operators';
-
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AuthenticatorService } from './services/authenticator.service';
@@ -25,13 +23,8 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    },
-    {
-      title: 'Session timer',
-      url: '/session-timer',
+      title: 'Resta premium',
+      url: '/adv-premium',
       icon: 'list'
     }
   ];
