@@ -10,6 +10,7 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 
+
 // Mobiscroll
 
 input::placeholder {
@@ -128,7 +129,7 @@ select:focus {outline:none;}
 
 
 ion-input{
-    --placeholder-color: #dedede;
+    --placeholder-color: #C8C7CE;
     --placeholder-opacity: 1;
 }
 
@@ -152,15 +153,16 @@ ion-input{
     --padding-bottom: 20px;
     height: auto;
     border-radius: 4px;
-    background-image: linear-gradient(258deg, #f3c7a1, #e87975);
+    background: #19B492;
 }
 
 // ion Item
 
 .us-ionitem {
-    --border-width: 1px;
+    --border-width: 0;
     margin-bottom: 10px;
     --inner-border-width: 0;
+    --background: #fff;
 }
 
 .us-ionitem-error {
@@ -185,18 +187,19 @@ ion-input{
 }
 
 .us-title-info {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
     text-align: center;
-    color: #808080;
-    text-align: left;
+    color: #555555;
+    text-align: center;
     display: block;
-    margin-top: 0px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
 }
 
 .ios .us-title-info {
@@ -229,10 +232,36 @@ ion-input{
 //toolbar
 
 ion-toolbar {
-    --background: linear-gradient(to left, #f3c7a1, #e87975);
+    --background: linear-gradient(to left, #FB6604, #F19700);
     --color: #fff;
 }
 
 ion-menu-button {
     --color: #fff;
+}
+
+.add-icon {
+    font-size: 26px;
+    margin-right: 10px;
+}
+
+// colors
+
+.red {
+    background: #DB2B29;
+}
+.blue {
+    background: #2677CB;
+}
+.violet {
+    background: #7B369D;
+}
+.green {
+    background: #27BE52;
+}
+.yellow {
+    background: #FEBC10;
+}
+.orange {
+    background: #FD9004;
 }

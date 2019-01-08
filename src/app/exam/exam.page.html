@@ -3,48 +3,96 @@
       <ion-buttons slot="start" class="us-back-arrow" (click)="closeModal()">
         <ion-icon ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon>
       </ion-buttons>
+      <ion-title>
+        NUOVO ESAME
+      </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-  <h1 class="us-title">Aggiungi esame</h1>
-  <p class="us-title-info">Aggiungi tutte le informazioni del tuo esame</p>
-  <form [formGroup]="formExam" (ngSubmit)="createExam()">
-    <ion-list>
-      <ion-item class="us-ionitem">
-        <ion-input required type="text" formControlName="color" placeholder="Colore"></ion-input>
-      </ion-item>
-      <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.color.pristine && !formExam.controls.color.valid">
-        <p class="form-error" item-right *ngIf="!formExam.controls.color.pristine && formExam.controls.color.hasError('required')">
-          Campo obbligatorio.
-        </p>
-      </ion-item>
-      <ion-item class="us-ionitem">
-        <ion-input required type="text" formControlName="exam" placeholder="Nome esame"></ion-input>
-        <!--<select required placeholder="Nome esame" formControlName="exam" mbsc-select [mbsc-options]="examsSettings"></select>-->
-      </ion-item>
-      <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.exam.pristine && !formExam.controls.exam.valid">
-        <p class="form-error" item-right *ngIf="!formExam.controls.exam.pristine && formExam.controls.exam.hasError('required')">
-          Campo obbligatorio.
-        </p>
-      </ion-item>
-      <ion-item class="us-ionitem">
-        <ion-input required type="number" formControlName="credits" placeholder="Crediti"></ion-input>
-      </ion-item>
-      <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.credits.pristine && !formExam.controls.credits.valid">
-        <p class="form-error" item-right *ngIf="!formExam.controls.credits.pristine && formExam.controls.credits.hasError('required')">
-          Campo obbligatorio.
-        </p>
-      </ion-item>
-      <ion-item class="us-ionitem">
-        <ion-input required type="text" formControlName="professor" placeholder="Professore"></ion-input>
-        <!--<select required placeholder="Professore" formControlName="professor" mbsc-select [mbsc-options]="professorsSettings"></select>-->
-      </ion-item>
-      <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.professor.pristine && !formExam.controls.professor.valid">
-        <p class="form-error" item-right *ngIf="!formExam.controls.professor.pristine && formExam.controls.professor.hasError('required')">
-          Campo obbligatorio.
-        </p>
-      </ion-item>
-    </ion-list>
-    <ion-button class="us-button" expand="full" type="submit" [disabled]="!formExam.valid">Aggiungi</ion-button>
+  <p class="us-title-info">Inserisci tutti i dati relativi al nuovo esame che vuoi aggiungere al tuo libretto</p>
+  <form [formGroup]="formExam">
+
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2" class="color red active" (click)="changeColor('red')"></ion-col>
+        <ion-col size="2" class="color orange" (click)="changeColor('orange')"></ion-col>
+        <ion-col size="2" class="color blue" (click)="changeColor('blue')"></ion-col>
+        <ion-col size="2" class="color violet" (click)="changeColor('violet')"></ion-col>
+        <ion-col size="2" class="color green" (click)="changeColor('green')"></ion-col>
+        <ion-col size="2" class="color yellow" (click)="changeColor('yellow')"></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <ion-item class="us-ionitem hidden">
+              <ion-input required type="text" formControlName="color" placeholder="Colore"></ion-input>
+            </ion-item>
+            <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.color.pristine && !formExam.controls.color.valid">
+              <p class="form-error" item-right *ngIf="!formExam.controls.color.pristine && formExam.controls.color.hasError('required')">
+                Campo obbligatorio.
+              </p>
+            </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item class="us-ionitem">
+            <ion-icon name="ios-book"></ion-icon>
+            <ion-input required type="text" formControlName="exam" placeholder="Nome esame"></ion-input>
+          </ion-item>
+          <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.exam.pristine && !formExam.controls.exam.valid">
+            <p class="form-error" item-right *ngIf="!formExam.controls.exam.pristine && formExam.controls.exam.hasError('required')">
+              Campo obbligatorio.
+            </p>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="7">
+          <ion-item class="us-ionitem">
+            <ion-icon name="ios-calendar"></ion-icon>
+            <ion-datetime  required displayFormat="MM/DD/YYYY" formControlName="appeal" placeholder="Data Appello"></ion-datetime>
+          </ion-item>
+          <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.appeal.pristine && !formExam.controls.appeal.valid">
+            <p class="form-error" item-right *ngIf="!formExam.controls.appeal.pristine && formExam.controls.appeal.hasError('required')">
+              Campo obbligatorio.
+            </p>
+          </ion-item>
+        </ion-col>
+        <ion-col size="5">
+          <ion-item class="us-ionitem">
+            <ion-icon name="ios-ribbon"></ion-icon>
+            <ion-input required type="number" formControlName="credits" placeholder="Crediti"></ion-input>
+          </ion-item>
+          <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.credits.pristine && !formExam.controls.credits.valid">
+            <p class="form-error" item-right *ngIf="!formExam.controls.credits.pristine && formExam.controls.credits.hasError('required')">
+              Campo obbligatorio.
+            </p>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item class="us-ionitem">
+            <ion-icon name="ios-person"></ion-icon>
+            <ion-input required type="text" formControlName="professor" placeholder="Professore"></ion-input>
+          </ion-item>
+          <ion-item class="form-error-list us-ionitem-error" *ngIf="!formExam.controls.professor.pristine && !formExam.controls.professor.valid">
+            <p class="form-error" item-right *ngIf="!formExam.controls.professor.pristine && formExam.controls.professor.hasError('required')">
+              Campo obbligatorio.
+            </p>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    
   </form>
 </ion-content>
+
+<ion-footer padding>
+  <ion-button class="us-button" expand="full" (click)="createExam()" [disabled]="!formExam.valid">SALVA</ion-button>
+</ion-footer>
